@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Study Hub - Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 60px; /* Space for footer */
+        }
+
+        .top-bar {
+            background-color: #2c3e50; /* Dark header */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .top-bar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar nav ul li {
+            margin-left: 20px;
+        }
+
+        .top-bar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-bar nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* dashboard-container */
+        .dashboard-container {
+            padding: 30px;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            border: 1px solid #e0e0e0;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff; /* Primary blue */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-body p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .card-body .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745; /* Success green */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-body .btn:hover {
+            background-color: #218838;
+        }
+
+        .quick-access {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .quick-access a {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 0 10px 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .quick-access a:hover {
+            background-color: #e9ecef;
+        }
+
+        .footer {
+            background-color: #343a40; /* Dark footer */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>IT Study Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="videos.html">Video Library</a></li>
+                <li><a href="live-classes.html">Live Classes</a></li>
+                <li><a href="note.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="dashboard-container">
+        <h2>Welcome to your IT Study Hub Dashboard!</h2>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">Your Progress</div>
+                <div class="card-body">
+                    <h3>Web Development</h3>
+                    <p>Completed: <strong>65%</strong></p>
+                    <div style="background-color: #e9ecef; border-radius: 5px; height: 10px; width: 100%;">
+                        <div style="background-color: #007bff; height: 10px; width: 65%; border-radius: 5px;"></div>
+                    </div>
+                    <h3 style="margin-top: 15px;">Python Fundamentals</h3>
+                    <p>Completed: <strong>30%</strong></p>
+                    <div style="background-color: #e9ecef; border-radius: 5px; height: 10px; width: 100%;">
+                        <div style="background-color: #ffc107; height: 10px; width: 30%; border-radius: 5px;"></div>
+                    </div>
+                    <a href="progress.html" class="btn">View Full Progress</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">Recent Activity</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Joined the "Advanced JavaScript" live class.</li>
+                        <li>Downloaded notes for "Introduction to Databases".</li>
+                        <li>Completed the quiz for "HTML Basics".</li>
+                        <li>Submitted assignment for "CSS Frameworks".</li>
+                        <li>Watched "Node.js for Beginners" video.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">Upcoming Live Classes</div>
+                <div class="card-body">
+                    <h3>React Hooks Masterclass</h3>
+                    <p>Date: <strong>May 6, 2025</strong></p>
+                    <p>Time: <strong>4:00 PM - 5:30 PM</strong></p>
+                    <a href="live-classes.html" class="btn">Join Class</a>
+                    <h3 style="margin-top: 15px;">Data Structures in Python</h3>
+                    <p>Date: <strong>May 8, 2025</strong></p>
+                    <p>Time: <strong>7:00 PM - 8:00 PM</strong></p>
+                    <a href="live-classes.html" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">Quick Links</div>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="videos.html">Video Library</a></li>
+                        <li><a href="study-notes.html">Study Notes</a></li>
+                        <li><a href="assignments.html">Assignments</a></li>
+                        <li><a href="forum.html">Community Forum</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-access">
+            <h3>Quick Access</h3>
+            <a href="videos.html">Go to Videos</a>
+            <a href="study-notes.html">Access Study Notes</a>
+            <a href="live-classes.html">See Live Classes</a>
+            <a href="assignments.html">View Assignments</a>
+            <a href="profile.html">Edit Profile</a>
+            <a href="contact.html">Contact Support</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
