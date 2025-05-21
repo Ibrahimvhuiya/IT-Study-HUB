@@ -82,6 +82,12 @@
   </div>
 
   <script>
+    // Auto redirect if already logged in
+    const user = localStorage.getItem("user");
+    if (user) {
+      window.location.href = "Dashboard.html";
+    }
+
     const form = document.getElementById("registerForm");
 
     form.addEventListener("submit", function (e) {
