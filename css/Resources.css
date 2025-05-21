@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f8fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.top-header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #055a8c;
+}
+
+.main-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: #007BFF;
+}
+
+.hero {
+  background: linear-gradient(to right, #007BFF, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Resource Categories */
+.resource-section {
+  margin: 50px 0;
+}
+
+.resource-category {
+  background: white;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.resource-category h3 {
+  color: #055a8c;
+  margin-bottom: 15px;
+}
+
+.resource-category ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.resource-category li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.resource-category a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.resource-category a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}

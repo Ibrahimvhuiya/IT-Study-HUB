@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live-Classes</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/Live-classes.css">
+    <!-- JavaScript File -->
+    <script src="js/Live-classes.js" defer></script>
+
+</head>
+<body>
+    <div class="top-bar">
+        <h1>IT Study Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="videos.html">Video Library</a></li>
+                <li><a href="live-classes.html">Live Classes</a></li>
+                <li><a href="note.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="content">
+        <h2>Upcoming Live Classes</h2>
+        <div class="instructor-card">
+            <img src="deepak-photo.jpg" alt="Instructor Photo">
+            <div>
+                <h4>MD Monir Hossain</h4>
+                <p>Senior Python Developer | 5+ years experience</p>
+            </div>
+        </div>        
+        
+        <div class="class-card">
+            <h3>Introduction to Python Programming</h3>
+            <p><strong>Date:</strong> 28th April 2025</p>
+            <p><strong>Time:</strong> 5:00 PM - 6:00 PM</p>
+            <p><strong>Instructor:</strong> MD Monir Hossain</p>
+            <iframe src="https://meet.jit.si/YourCustomRoom" allow="camera; microphone"></iframe>
+        </div>
+        
+        <h2>Register for Live Class</h2>
+        <form action="register-live-class.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name">
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Your email address">
+        
+            <button type="submit">Register for Class</button>
+        </form>
+        
+        <select id="subject-filter">
+            <option value="all">All Subjects</option>
+            <option value="webdev">Web Development</option>
+            <option value="python">Python</option>
+            <option value="datascience">Data Science</option>
+        </select>
+        
+        <h3>Classroom Guidelines</h3>
+        <ul>
+            <li>Join 5 minutes before class starts</li>
+            <li>Mute your mic when not speaking</li>
+            <li>Respect the instructor and classmates</li>
+            <li>Use the chat for questions</li>
+            <li>Test your audio/video beforehand</li>
+        </ul>
+    </div>
+</body>
+</html>

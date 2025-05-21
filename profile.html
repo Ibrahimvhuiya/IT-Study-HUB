@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/Profile.css">
+    <!-- JavaScript File -->
+</head>
+<body>
+    <div class="top-bar">
+        <h1>IT Study Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="videos.html">Video Library</a></li>
+                <li><a href="live-classes.html">Live Classes</a></li>
+                <li><a href="note.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div> 
+    <div class="profile-container">
+        <h2>Student Profile</h2>
+        <form id="profileForm">
+            <div class="profile-group profile-image-container">
+                <div class="profile-image-wrapper">
+                    <img id="previewImage" src="" alt="Profile Picture" class="profile-image" style="display: none;">
+                    <img id="defaultImage" src="https://via.placeholder.com/100?text=Profile" alt="Default Profile" class="profile-image">
+                    <button type="button" id="removeImageBtn">×</button>
+                </div>
+                <div class="image-options">
+                    <label for="profileImage" class="upload-button">Select File</label>
+                    <button type="button" id="removeImageOption" style="display: none;">Remove Image</button>
+                    <input type="file" id="profileImage" accept="image/*">
+                    <div class="error-message" id="profileImageError"></div>
+                </div>
+            </div>
+
+            <div class="profile-group">
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" value="12345678" readonly>
+                <small>This is automatically generated.</small>
+            </div>
+
+            <div class="profile-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" value="" required>
+                <div class="error-message" id="firstNameError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" value="" required>
+                <div class="error-message" id="lastNameError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" value="2000-01-01" required>
+                <div class="error-message" id="dobError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+                <div class="error-message" id="genderError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="major">Major:</label>
+                <select id="major" required>
+                    <option value="">Select Major</option>
+                    <option value="cs" selected>Computer Science</option>
+                    <option value="eng">Engineering</option>
+                    <option value="biz">Business</option>
+                </select>
+                <div class="error-message" id="majorError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" value="+8801XXXXXXXX">
+                <div class="error-message" id="phoneError"></div>
+            </div>
+
+            <div class="profile-group">
+                <label for="address">Address:</label>
+                <textarea id="address" rows="3">123 Street, City</textarea>
+            </div>
+
+            <div class="profile-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" rows="4">I am a student who loves coding.</textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="button">Cancel</button>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/profile.js" defer></script>
+</body>
+</html>

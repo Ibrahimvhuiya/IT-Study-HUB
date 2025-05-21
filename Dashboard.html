@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | IT Study Hub</title>
+  <link rel="stylesheet" href="../css/Style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="top-bar">
+    <h1>IT Study Hub</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="videos.html">Video Library</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="note.html">Teachers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div id="dashboardContainer" class="dashboard-container">
+    <h2>Welcome to your IT Study Hub Dashboard!</h2>
+    <!-- Content ... (same as before) -->
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ User Check + Logout Script -->
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      const container = document.getElementById("dashboardContainer");
+      const userInfo = document.createElement("div");
+      userInfo.style.padding = "15px";
+      userInfo.style.margin = "15px";
+      userInfo.style.border = "1px solid #ccc";
+      userInfo.style.borderRadius = "10px";
+      userInfo.style.display = "flex";
+      userInfo.style.alignItems = "center";
+      userInfo.innerHTML = `
+        <img src="${user.picture}" alt="User Image" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
+        <div>
+          <h3>👋 Welcome, ${user.name}</h3>
+          <p>${user.email}</p>
+        </div>
+      `;
+      container.prepend(userInfo);
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html"; // 🔄 Redirect to homepage after logout
+    }
+  </script>
+</body>
+</html>
