@@ -12,7 +12,6 @@
       align-items: center;
       height: 100vh;
     }
-
     .register-box {
       background: #fff;
       padding: 30px;
@@ -20,12 +19,10 @@
       width: 400px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-
     .register-box h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-
     .register-box input,
     .register-box select,
     .register-box textarea {
@@ -36,7 +33,6 @@
       border: 1px solid #ccc;
       font-size: 14px;
     }
-
     .register-box button {
       width: 100%;
       padding: 12px;
@@ -48,11 +44,9 @@
       font-size: 16px;
       cursor: pointer;
     }
-
     .register-box button:hover {
       background-color: #1c6ed5;
     }
-
     .error-message {
       color: red;
       font-size: 13px;
@@ -117,10 +111,17 @@
         bio: document.getElementById("bio").value,
       };
 
-      // Save to LocalStorage
+      // Save full profile
       localStorage.setItem("studentProfile", JSON.stringify(student));
 
-      // Redirect to dashboard.html
+      // Save login user info
+      localStorage.setItem("user", JSON.stringify({
+        name: student.firstName + " " + student.lastName,
+        email: student.email,
+        picture: "https://via.placeholder.com/100"
+      }));
+
+      // Redirect to dashboard
       window.location.href = "Dashboard.html";
     });
   </script>
