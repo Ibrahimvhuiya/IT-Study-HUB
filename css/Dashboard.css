@@ -1,162 +1,211 @@
-/* === Dashboard Container === */
-.dashboard-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-/* === Headline === */
-.dashboard-container h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #2c3e50;
-}
-
-/* === Dashboard Grid === */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-/* === Dashboard Cards === */
-.dashboard-card {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 15px 20px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.card-body {
-    padding: 20px;
-    color: #333;
-}
-
-.card-body h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: #2c3e50;
-}
-
-.card-body p {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.card-body ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-.card-body ul li {
-    margin-bottom: 8px;
-}
-
-/* === Progress Bars === */
-.progress-bar {
-    background-color: #e9ecef;
-    border-radius: 5px;
-    height: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 5px;
-}
-
-.card-body .progress-bar {
-    background-color: #e9ecef;
-    border-radius: 5px;
-    height: 10px;
-    margin-bottom: 15px;
-}
-
-.card-body .progress-fill {
-    height: 100%;
-    border-radius: 5px;
-}
-
-/* === Buttons === */
-.btn {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 16px;
-    margin-top: 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-/* === Quick Access Section === */
-.quick-access {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #ecf0f1;
-    border-radius: 10px;
-}
-
-.quick-access h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-}
-
-.quick-access a {
-    display: inline-block;
-    margin: 8px 10px 0 0;
-    background-color: #3498db;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.quick-access a:hover {
-    background-color: #2980b9;
-}
-
-/* === Footer === */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #2c3e50;
-    color: white;
-    margin-top: 50px;
-    border-radius: 0 0 10px 10px;
-}
-
-/* === Responsive Adjustments === */
-@media (max-width: 768px) {
-    .dashboard-container h2 {
-        font-size: 24px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | IT Study Hub</title>
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="stylesheet" href="css/Dashboard.css" />
+  <style>
+    /* REMOVE THIS SECTION if you want the nav bar to always be visible horizontally */
+    .nav-toggle {
+      display: none; /* Keep this as display: none if you don't want the hamburger icon at all */
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
     }
 
-    .btn,
-    .quick-access a {
-        font-size: 13px;
-        padding: 8px 12px;
+    .user-info-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      margin-bottom: 25px;
     }
-}
+
+    .user-info-box .user-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* IMPORTANT: To make the navbar always visible like Screenshot (86),
+       you would generally remove or heavily modify the @media (max-width: 768px) block.
+       However, this goes against the previous requirement of having a working hamburger menu on small screens.
+       If you want to keep the hamburger functionality for small screens but show all items horizontally for larger screens,
+       your current CSS is already doing that.
+
+       If you want the nav bar to be ALWAYS horizontal, even on small screens, you must remove the @media query for the nav.
+       This will likely cause layout issues on very small mobile devices.
+    */
+    @media (max-width: 768px) {
+      /* REMOVE OR MODIFY THESE RULES IF YOU DON'T WANT A HAMBURGER MENU AT ALL */
+      nav ul {
+        /* These properties are for the side-sliding mobile menu */
+        position: fixed; /* Keep for slide-in effect, but if always visible, make it relative */
+        top: 0;
+        right: -100%; /* Changed from left to right for hiding off-screen */
+        width: 250px;
+        height: 100vh;
+        background-color: #2c3e50;
+        flex-direction: column; /* This makes menu items stack vertically */
+        padding-top: 60px;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        display: flex; /* Ensure it's a flex container for column layout */
+      }
+
+      nav ul.show {
+        right: 0; /* Changed from left to right for showing */
+      }
+
+      nav ul li {
+        text-align: left;
+        padding: 15px 20px;
+      }
+
+      .nav-toggle {
+        display: block; /* Show the hamburger icon on small screens */
+      }
+
+      /* These are already good for responsiveness of the top bar container */
+      .top-bar .container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .top-bar nav {
+        position: relative;
+      }
+    }
+
+    /* Add or modify these for the default (larger screen) navbar behavior */
+    .top-bar nav ul {
+      display: flex; /* Ensure horizontal display for larger screens */
+      justify-content: flex-end; /* Align items to the right */
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-bar nav ul li {
+      padding: 0 15px; /* Spacing between items */
+    }
+
+    .top-bar nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .top-bar nav ul li a:hover {
+      color: #ccc;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container">
+      <h1>IT Study Hub</h1>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="Dashboard.html">Dashboard</a></li>
+          <li><a href="videos.html">Video Library</a></li>
+          <li><a href="live-classes.html">Live Classes</a></li>
+          <li><a href="note.html">Teachers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="profile.html">My Profile</a></li>
+          <li><a href="Resources.html">Resources</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="index.html" onclick="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-container container">
+    <h2>Welcome to your IT Study Hub Dashboard!</h2> 
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      const container = document.querySelector(".dashboard-container");
+      const userInfo = document.createElement("div");
+      userInfo.classList.add("user-info-box");
+      userInfo.innerHTML = `
+        <img src="${user.picture}" alt="User Image" class="user-img">
+        <div>
+          <h3>👋 Welcome, ${user.name}</h3>
+          <p>${user.email}</p>
+        </div>
+      `;
+      container.prepend(userInfo);
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
+
+    function toggleMenu() {
+      const navMenu = document.getElementById("nav-menu");
+      navMenu.classList.toggle("show");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const greetingElement = document.querySelector(".dashboard-container h2");
+      const hour = new Date().getHours();
+
+      let greeting = "Welcome to your IT Study Hub Dashboard!";
+      if (hour < 12) greeting = "Good morning! Ready to learn?";
+      else if (hour < 18) greeting = "Good afternoon! Keep up the good work!";
+      else greeting = "Good evening! Let's wrap up strong!";
+
+      if (greetingElement) {
+        greetingElement.textContent = greeting;
+      }
+
+      const progressFills = document.querySelectorAll(".progress-fill");
+      progressFills.forEach((fill) => {
+        const width = fill.getAttribute("data-width") || "0%";
+        fill.style.width = "0";
+        setTimeout(() => {
+          fill.style.transition = "width 1s ease-in-out";
+          fill.style.width = width;
+        }, 200);
+      });
+
+      const cards = document.querySelectorAll(".dashboard-card");
+      cards.forEach((card) => {
+        card.addEventListener("mouseover", () => {
+          card.style.transform = "scale(1.02)";
+          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
+        });
+        card.addEventListener("mouseout", () => {
+          card.style.transform = "scale(1)";
+          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
