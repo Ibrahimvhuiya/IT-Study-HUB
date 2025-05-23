@@ -1,32 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Live Classes</title>
-  <link rel="stylesheet" href="css/video.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/Style.css">
-  <link rel="stylesheet" href="css/Video.css">
-  <link rel="stylesheet" href="js/video.js">
-  <!-- JavaScript File -->
-  <script src="js/video.js" defer></script>
+  <link rel="stylesheet" href="css/video.css">
+  <style>
+    .nav-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
 
+    @media (max-width: 768px) {
+      .top-bar nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #2c3e50;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .top-bar nav ul.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .top-bar {
+        position: relative;
+      }
+    }
+  </style>
+  <script defer>
+    function toggleMenu() {
+      const navMenu = document.querySelector(".top-bar nav ul");
+      navMenu.classList.toggle("show");
+    }
+  </script>
+  <script src="js/video.js" defer></script>
 </head>
 <body>
   <div class="top-bar">
     <h1>IT Study Hub</h1>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
     <nav>
-        <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="videos.html">Video</a></li>
-            <li><a href="live-classes.html">Live Classes</a></li>
-            <li><a href="note.html">Teachers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="profile.html">My Profile</a></li>
-            <li><a href="resources.html" class="active">Resources</a></li>
-            <li><a href="Blog.html">Blog</a></li>
-            <li><a href="logout.html">Logout</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="videos.html">Video Library</a></li>
+        <li><a href="live-classes.html" class="active">Live Classes</a></li>
+        <li><a href="note.html">Teachers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="logout.html">Logout</a></li>
+      </ul>
     </nav>
   </div>
 
@@ -36,9 +74,9 @@
     <div class="video-card">
       <section>
         <h2>📘 Django Web Development Course</h2>
-        <p><strong>Instructor:</strong>MD Monir Houssin</p>
-        <p><strong>Level:</strong> Expart </p>
-        <p><strong>Live Class:</strong>  @ 5PM (<span class="live-now">🔴</span> <a href="live-django.html">Join Now</a>)</p>
+        <p><strong>Instructor:</strong> MD Monir Houssin</p>
+        <p><strong>Level:</strong> Expert</p>
+        <p><strong>Live Class:</strong> @ 5PM (<span class="live-now">🔴</span> <a href="live-django.html">Join Now</a>)</p>
 
         <h3>🔹 Topics Covered:</h3>
         <ul>
@@ -51,9 +89,9 @@
 
         <h3>🎥 Video Lessons:</h3>
         <ol>
-          <li><a href="">Lesson 1: </a> – 25 min</li>
-          <li><a href="">Lesson 2: </a> – 30 min</li>
-          <li><a href="">Lesson 3: T</a> – 40 min</li>
+          <li><a href="">Lesson 1:</a> – 25 min</li>
+          <li><a href="">Lesson 2:</a> – 30 min</li>
+          <li><a href="">Lesson 3:</a> – 40 min</li>
         </ol>
 
         <h3>📥 Resources:</h3>
@@ -99,7 +137,7 @@
     <div class="video-card">
       <section>
         <h2>🐍 Python for Data Science</h2>
-        <p><strong>Instructor:</strong> Miraz </p>
+        <p><strong>Instructor:</strong> Miraz</p>
         <p><strong>Level:</strong> Intermediate</p>
         <p><strong>Live Class:</strong> May 7, 2025 @ 6PM (<a href="live-python.html">Join Later</a>)</p>
 
