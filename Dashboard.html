@@ -6,51 +6,87 @@
   <title>Dashboard | IT Study Hub</title>
   <link rel="stylesheet" href="css/Style.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .nav-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #2c3e50;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .top-bar .container {
+        position: relative;
+      }
+
+      .top-bar nav {
+        position: relative;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="top-bar">
-    <h1>IT Study Hub</h1>
-    <nav>
-      <ul>
-        <li><a href="Dashboard.html">Dashboard</a></li>
-        <li><a href="videos.html">Video Library</a></li>
-        <li><a href="live-classes.html">Live Classes</a></li>
-        <li><a href="note.html">Teachers</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="profile.html">My Profile</a></li>
-        <li><a href="Resources.html">Resources</a></li>
-        <li><a href="Blog.html">Blog</a></li>
-        <li><a href="#" onclick="logout()">Logout</a></li>
-      </ul>
-    </nav>
-  </div>
+  <header class="top-bar">
+    <div class="container">
+      <h1>IT Study Hub</h1>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <nav>
+        <ul>
+          <li><a href="Dashboard.html">Dashboard</a></li>
+          <li><a href="videos.html">Video Library</a></li>
+          <li><a href="live-classes.html">Live Classes</a></li>
+          <li><a href="note.html">Teachers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="profile.html">My Profile</a></li>
+          <li><a href="Resources.html">Resources</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div id="dashboardContainer" class="dashboard-container">
+  <main class="dashboard-container container">
     <h2>Welcome to your IT Study Hub Dashboard!</h2>
-    <!-- Content ... (same as before) -->
-  </div>
+    <!-- Additional dashboard content can be inserted here -->
+  </main>
 
   <footer class="footer">
     <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
   </footer>
 
-  <!-- ✅ User Check + Logout Script -->
   <script>
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       window.location.href = "login.html";
     } else {
-      const container = document.getElementById("dashboardContainer");
+      const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
-      userInfo.style.padding = "15px";
-      userInfo.style.margin = "15px";
-      userInfo.style.border = "1px solid #ccc";
-      userInfo.style.borderRadius = "10px";
-      userInfo.style.display = "flex";
-      userInfo.style.alignItems = "center";
+      userInfo.classList.add("user-info-box");
       userInfo.innerHTML = `
-        <img src="${user.picture}" alt="User Image" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
+        <img src="${user.picture}" alt="User Image" class="user-img">
         <div>
           <h3>👋 Welcome, ${user.name}</h3>
           <p>${user.email}</p>
@@ -61,7 +97,12 @@
 
     function logout() {
       localStorage.removeItem("user");
-      window.location.href = "index.html"; // 🔄 Redirect to homepage after logout
+      window.location.href = "index.html";
+    }
+
+    function toggleMenu() {
+      const navMenu = document.querySelector("nav ul");
+      navMenu.classList.toggle("show");
     }
   </script>
 </body>
