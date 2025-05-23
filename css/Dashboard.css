@@ -20,7 +20,7 @@
     /* Styles for the user information box */
     .user-info-box {
       display: flex;
-      align-items: center;
+      align-items: right;
       gap: 15px;
       padding: 15px;
       background: #ecf0f1;
