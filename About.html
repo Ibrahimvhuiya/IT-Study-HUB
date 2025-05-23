@@ -1,27 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - IT Study Hub</title>
+  <link rel="stylesheet" href="css/Style.css">
   <link rel="stylesheet" href="css/About.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    .nav-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #2c3e50;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .top-bar nav ul.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .top-bar {
+        position: relative;
+      }
+    }
+  </style>
+  <script defer>
+    function toggleMenu() {
+      const navMenu = document.querySelector(".top-bar nav ul");
+      navMenu.classList.toggle("show");
+    }
+  </script>
 </head>
 <body>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">IT Study Hub</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="Dashboard.html">Dashboard</a></li>
+  <!-- Responsive Navbar -->
+  <div class="top-bar">
+    <h1>IT Study Hub</h1>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="videos.html">Video Library</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="note.html">Teachers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="resources.html">Resources</a></li>
         <li><a href="Blog.html">Blog</a></li>
-        <li><a href="Resources.html">Resources</a></li>
-        
+        <li><a href="#" class="active">About</a></li>
+        <li><a href="logout.html">Logout</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 
   <!-- Header -->
   <header>
@@ -96,6 +143,5 @@
   <footer>
     <p>© 2025 IT Study Hub. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
