@@ -37,19 +37,19 @@
       nav ul {
         position: fixed;
         top: 0;
-        left: -100%;
+        left: -100%; /* Initially hidden off-screen */
         width: 250px;
         height: 100vh;
         background-color: #2c3e50;
         flex-direction: column;
         padding-top: 60px;
-        transition: left 0.3s ease-in-out;
+        transition: left 0.3s ease-in-out; /* Smooth transition for sliding in/out */
         z-index: 1000;
-        display: flex;
+        display: flex; /* Ensure it's a flex container for column layout */
       }
 
       nav ul.show {
-        left: 0;
+        left: 0; /* Slide in when 'show' class is added */
       }
 
       nav ul li {
@@ -58,7 +58,7 @@
       }
 
       .nav-toggle {
-        display: block;
+        display: block; /* Show the hamburger icon on small screens */
       }
 
       .top-bar .container {
@@ -69,7 +69,7 @@
       }
 
       .top-bar nav {
-        position: relative;
+        position: relative; /* Ensure z-index works as expected */
       }
     }
   </style>
@@ -96,7 +96,7 @@
   </header>
 
   <main class="dashboard-container container">
-    <h2>Welcome to your IT Study Hub Dashboard!</h2>
+    <h2>Welcome to your IT Study Hub Dashboard!</h2> 
   </main>
 
   <footer class="footer">
@@ -104,11 +104,14 @@
   </footer>
 
   <script>
+    // Retrieve user data from localStorage
     const user = JSON.parse(localStorage.getItem("user"));
 
+    // Redirect to login if no user is found
     if (!user) {
       window.location.href = "login.html";
     } else {
+      // Add user info box to the dashboard
       const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
       userInfo.classList.add("user-info-box");
@@ -119,20 +122,24 @@
           <p>${user.email}</p>
         </div>
       `;
-      container.prepend(userInfo);
+      container.prepend(userInfo); // Add user info at the beginning of the container
     }
 
+    // Function to handle user logout
     function logout() {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
+      localStorage.removeItem("user"); // Remove user data
+      window.location.href = "index.html"; // Redirect to homepage
     }
 
+    // Function to toggle the mobile navigation menu
     function toggleMenu() {
       const navMenu = document.getElementById("nav-menu");
-      navMenu.classList.toggle("show");
+      navMenu.classList.toggle("show"); // Toggle 'show' class to display/hide menu
     }
 
+    // Execute code after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function () {
+      // Update greeting message based on time of day
       const greetingElement = document.querySelector(".dashboard-container h2");
       const hour = new Date().getHours();
 
@@ -145,25 +152,27 @@
         greetingElement.textContent = greeting;
       }
 
+      // Animate progress bars (if any)
       const progressFills = document.querySelectorAll(".progress-fill");
       progressFills.forEach((fill) => {
         const width = fill.getAttribute("data-width") || "0%";
-        fill.style.width = "0";
+        fill.style.width = "0"; // Start from 0 width
         setTimeout(() => {
-          fill.style.transition = "width 1s ease-in-out";
-          fill.style.width = width;
-        }, 200);
+          fill.style.transition = "width 1s ease-in-out"; // Apply transition
+          fill.style.width = width; // Expand to target width
+        }, 200); // Small delay before animation starts
       });
 
+      // Add hover effects to dashboard cards (if any)
       const cards = document.querySelectorAll(".dashboard-card");
       cards.forEach((card) => {
         card.addEventListener("mouseover", () => {
-          card.style.transform = "scale(1.02)";
-          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
+          card.style.transform = "scale(1.02)"; // Slightly enlarge on hover
+          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)"; // Add stronger shadow
         });
         card.addEventListener("mouseout", () => {
-          card.style.transform = "scale(1)";
-          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+          card.style.transform = "scale(1)"; // Reset size
+          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)"; // Reset shadow
         });
       });
     });
