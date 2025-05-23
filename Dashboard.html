@@ -41,12 +41,19 @@
         position: absolute;
         top: 60px;
         left: 0;
-        right: 0;
+        width: 100%;
+        padding: 10px 0;
         z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
       nav ul.show {
         display: flex;
+      }
+
+      nav ul li {
+        text-align: center;
+        padding: 10px 0;
       }
 
       .nav-toggle {
@@ -55,10 +62,13 @@
 
       .top-bar .container {
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .top-bar nav {
-        position: relative;
+        width: 100%;
       }
     }
   </style>
@@ -78,7 +88,7 @@
           <li><a href="profile.html">My Profile</a></li>
           <li><a href="Resources.html">Resources</a></li>
           <li><a href="Blog.html">Blog</a></li>
-          <li><a href="#" onclick="logout()">Logout</a></li>
+          <li><a href="index.html" onclick="logout()">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -86,7 +96,6 @@
 
   <main class="dashboard-container container">
     <h2>Welcome to your IT Study Hub Dashboard!</h2>
-    <!-- Dynamic content will be injected here -->
   </main>
 
   <footer class="footer">
@@ -123,7 +132,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      // Greeting update
       const greetingElement = document.querySelector(".dashboard-container h2");
       const hour = new Date().getHours();
 
@@ -136,7 +144,6 @@
         greetingElement.textContent = greeting;
       }
 
-      // Animate progress bars
       const progressFills = document.querySelectorAll(".progress-fill");
       progressFills.forEach((fill) => {
         const width = fill.getAttribute("data-width") || "0%";
@@ -147,7 +154,6 @@
         }, 200);
       });
 
-      // Card hover animation
       const cards = document.querySelectorAll(".dashboard-card");
       cards.forEach((card) => {
         card.addEventListener("mouseover", () => {
