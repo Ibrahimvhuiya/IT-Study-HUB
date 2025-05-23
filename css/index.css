@@ -51,6 +51,14 @@ a:hover {
     font-weight: bold;
 }
 
+/* Burger Button */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #00d8ff;
+}
+
 /* Hero Section */
 .hero-section {
     background: linear-gradient(to right, #007bff, #00c6ff);
@@ -207,10 +215,32 @@ a:hover {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .main-menu ul {
+        display: none;
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        align-items: flex-start;
+        background-color: #222;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .main-menu ul.show {
+        display: flex;
+    }
+
+    .main-menu li {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .user-actions {
+        width: 100%;
+        text-align: left;
+        padding: 10px 20px;
     }
 
     .hero-headline {
