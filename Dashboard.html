@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard | IT Study Hub</title>
+  <link rel="stylesheet" href="css/Style.css" />
   <link rel="stylesheet" href="css/Dashboard.css" />
-  </head>
+</head>
 <body>
   <header class="top-bar">
     <h1>IT Study Hub</h1>
@@ -37,7 +38,7 @@
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-      window.location.href = "login.html";
+      window.location.href = "login.html"; 
     } else {
       const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
@@ -53,13 +54,13 @@
     }
 
     function logout() {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
+      localStorage.removeItem("user"); 
+      window.location.href = "index.html"; 
     }
 
     function toggleMenu() {
       const navMenu = document.getElementById("nav-menu");
-      navMenu.classList.toggle("show");
+      navMenu.classList.toggle("show"); 
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -72,9 +73,10 @@
       else greeting = "Good evening! Let's wrap up strong!";
 
       if (greetingElement) {
-        greetingElement.textContent = greeting;
+        greetingElement.textContent = greeting; 
       }
 
+  
       const progressFills = document.querySelectorAll(".progress-fill");
       progressFills.forEach((fill) => {
         const width = fill.getAttribute("data-width") || "0%";
@@ -85,6 +87,7 @@
         }, 200);
       });
 
+     
       const cards = document.querySelectorAll(".dashboard-card");
       cards.forEach((card) => {
         card.addEventListener("mouseover", () => {
