@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard | IT Study Hub</title>
   <link rel="stylesheet" href="css/Style.css">
-  <link rel="stylesheet" href="css/Dashboard.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <style>
     .nav-toggle {
       display: none;
@@ -15,6 +15,9 @@
       border: none;
       color: white;
       padding: 10px;
+      position: absolute;
+      right: 20px;
+      top: 10px;
     }
 
     @media (max-width: 768px) {
@@ -51,6 +54,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-right: 50px;
       }
     }
 
@@ -77,7 +81,7 @@
   <header class="top-bar">
     <div class="container">
       <h1>IT Study Hub</h1>
-      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
       <nav>
         <ul id="navMenu">
           <li><a href="Dashboard.html">Dashboard</a></li>
@@ -106,6 +110,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const user = JSON.parse(localStorage.getItem("user"));
+      const navToggle = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
 
       if (!user) {
         window.location.href = "login.html";
@@ -117,7 +123,6 @@
       const userInfo = document.createElement("div");
       userInfo.classList.add("user-info-box");
       
-      // Default avatar if user image not available
       const userImage = user.picture || 'https://via.placeholder.com/60';
       
       userInfo.innerHTML = `
@@ -129,14 +134,20 @@
       `;
       container.prepend(userInfo);
 
+      // Toggle menu function
+      navToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        navMenu.classList.toggle('show');
+      });
+
       // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
-        const navMenu = document.getElementById("navMenu");
-        const navToggle = document.querySelector(".nav-toggle");
-        
-        if (!navMenu.contains(event.target) && event.target !== navToggle) {
-          navMenu.classList.remove("show");
-        }
+      document.addEventListener('click', function() {
+        navMenu.classList.remove('show');
+      });
+
+      // Prevent menu from closing when clicking inside it
+      navMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
       });
     });
 
@@ -149,11 +160,6 @@
     function logout() {
       localStorage.removeItem("user");
       window.location.href = "index.html";
-    }
-
-    function toggleMenu() {
-      const navMenu = document.getElementById("navMenu");
-      navMenu.classList.toggle("show");
     }
   </script>
 </body>
