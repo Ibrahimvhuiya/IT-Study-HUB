@@ -18,6 +18,7 @@
       position: absolute;
       right: 20px;
       top: 10px;
+      z-index: 1001;
     }
 
     @media (max-width: 768px) {
@@ -37,8 +38,15 @@
       nav ul li {
         width: 100%;
         text-align: center;
-        padding: 10px 0;
+        padding: 12px 0;
         border-bottom: 1px solid #34495e;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
       }
 
       nav ul.show {
@@ -82,7 +90,7 @@
     <div class="container">
       <h1>IT Study Hub</h1>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
-      <nav>
+      <nav id="mainNav">
         <ul id="navMenu">
           <li><a href="Dashboard.html">Dashboard</a></li>
           <li><a href="videos.html">Video Library</a></li>
@@ -112,6 +120,7 @@
       const user = JSON.parse(localStorage.getItem("user"));
       const navToggle = document.getElementById("navToggle");
       const navMenu = document.getElementById("navMenu");
+      const mainNav = document.getElementById("mainNav");
 
       if (!user) {
         window.location.href = "login.html";
@@ -134,20 +143,33 @@
       `;
       container.prepend(userInfo);
 
-      // Toggle menu function
+      // Improved toggle menu function
       navToggle.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent event from bubbling up
+        e.stopPropagation();
         navMenu.classList.toggle('show');
+        
+        // Change icon based on menu state
+        if (navMenu.classList.contains('show')) {
+          navToggle.textContent = '✕'; // Show close icon
+        } else {
+          navToggle.textContent = '☰'; // Show menu icon
+        }
       });
 
       // Close menu when clicking outside
-      document.addEventListener('click', function() {
-        navMenu.classList.remove('show');
+      document.addEventListener('click', function(e) {
+        if (!mainNav.contains(e.target) && e.target !== navToggle) {
+          navMenu.classList.remove('show');
+          navToggle.textContent = '☰';
+        }
       });
 
-      // Prevent menu from closing when clicking inside it
-      navMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
+      // Close menu when clicking on a link
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          navMenu.classList.remove('show');
+          navToggle.textContent = '☰';
+        });
       });
     });
 
@@ -155,6 +177,7 @@
       if (confirm("Are you sure you want to logout?")) {
         logout();
       }
+      return false; // Prevent default anchor behavior
     }
 
     function logout() {
