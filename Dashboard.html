@@ -1,172 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | IT Study Hub</title>
-  <link rel="stylesheet" href="css/Style.css" />
-  <link rel="stylesheet" href="css/Dashboard.css" />
-  <style>
-      .nav-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        color: white;
-      }
-
-    .user-info-box {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: #ecf0f1;
-      border-radius: 10px;
-      margin-bottom: 25px;
-    }
-
-    .user-info-box .user-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Changed from left to right for hiding off-screen */
-        width: 250px;
-        height: 100vh;
-        background-color: #2c3e50;
-        flex-direction: column;
-        padding-top: 60px;
-        transition: right 0.3s ease-in-out; /* Changed from left to right for transition */
-        z-index: 1000;
-        display: flex;
-      }
-
-      nav ul.show {
-        right: 0; /* Changed from left to right for showing */
-      }
-
-      nav ul li {
-        text-align: left;
-        padding: 15px 20px;
-      }
-
-      .nav-toggle {
-        display: block;
-      }
-
-      .top-bar .container {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .top-bar nav {
-        position: relative;
-      }
-    }
-  </style>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | IT Study Hub</title>
+  <link rel="stylesheet" href="css/Style.css" />   <link rel="stylesheet" href="css/Dashboard.css" />   </head>
 <body>
-  <header class="top-bar">
-    <div class="container">
-      <h1>IT Study Hub</h1>
-      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-      <nav>
-        <ul id="nav-menu">
-          <li><a href="Dashboard.html">Dashboard</a></li>
-          <li><a href="videos.html">Video Library</a></li>
-          <li><a href="live-classes.html">Live Classes</a></li>
-          <li><a href="note.html">Teachers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="profile.html">My Profile</a></li>
-          <li><a href="Resources.html">Resources</a></li>
-          <li><a href="Blog.html">Blog</a></li>
-          <li><a href="index.html" onclick="logout()">Logout</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <header class="top-bar">
+    <h1>IT Study Hub</h1>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="Dashboard.html">Dashboard</a></li>
+        <li><a href="videos.html">Video Library</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="note.html">Teachers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="Resources.html">Resources</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="index.html" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <main class="dashboard-container container">
-    <h2>Welcome to your IT Study Hub Dashboard!</h2> 
-  </main>
+  <main class="dashboard-container container">
+    <h2>Welcome to your IT Study Hub Dashboard!</h2>
+  </main>
 
-  <footer class="footer">
-    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
-  </footer>
+  <footer class="footer">
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
 
-  <script>
-    const user = JSON.parse(localStorage.getItem("user"));
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) {
-      window.location.href = "login.html";
-    } else {
-      const container = document.querySelector(".dashboard-container");
-      const userInfo = document.createElement("div");
-      userInfo.classList.add("user-info-box");
-      userInfo.innerHTML = `
-        <img src="${user.picture}" alt="User Image" class="user-img">
-        <div>
-          <h3>👋 Welcome, ${user.name}</h3>
-          <p>${user.email}</p>
-        </div>
-      `;
-      container.prepend(userInfo);
-    }
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      const container = document.querySelector(".dashboard-container");
+      const userInfo = document.createElement("div");
+      userInfo.classList.add("user-info-box");
+      userInfo.innerHTML = `
+        <img src="${user.picture}" alt="User Image" class="user-img">
+        <div>
+          <h3>👋 Welcome, ${user.name}</h3>
+          <p>${user.email}</p>
+        </div>
+      `;
+      container.prepend(userInfo);
+    }
 
-    function logout() {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
-    }
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
 
-    function toggleMenu() {
-      const navMenu = document.getElementById("nav-menu");
-      navMenu.classList.toggle("show");
-    }
+    function toggleMenu() {
+      const navMenu = document.getElementById("nav-menu");
+      navMenu.classList.toggle("show");
+    }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const greetingElement = document.querySelector(".dashboard-container h2");
-      const hour = new Date().getHours();
+    document.addEventListener("DOMContentLoaded", function () {
+      const greetingElement = document.querySelector(".dashboard-container h2");
+      const hour = new Date().getHours();
 
-      let greeting = "Welcome to your IT Study Hub Dashboard!";
-      if (hour < 12) greeting = "Good morning! Ready to learn?";
-      else if (hour < 18) greeting = "Good afternoon! Keep up the good work!";
-      else greeting = "Good evening! Let's wrap up strong!";
+      let greeting = "Welcome to your IT Study Hub Dashboard!";
+      if (hour < 12) greeting = "Good morning! Ready to learn?";
+      else if (hour < 18) greeting = "Good afternoon! Keep up the good work!";
+      else greeting = "Good evening! Let's wrap up strong!";
 
-      if (greetingElement) {
-        greetingElement.textContent = greeting;
-      }
+      if (greetingElement) {
+        greetingElement.textContent = greeting;
+      }
 
-      const progressFills = document.querySelectorAll(".progress-fill");
-      progressFills.forEach((fill) => {
-        const width = fill.getAttribute("data-width") || "0%";
-        fill.style.width = "0";
-        setTimeout(() => {
-          fill.style.transition = "width 1s ease-in-out";
-          fill.style.width = width;
-        }, 200);
-      });
+      const progressFills = document.querySelectorAll(".progress-fill");
+      progressFills.forEach((fill) => {
+        const width = fill.getAttribute("data-width") || "0%";
+        fill.style.width = "0";
+        setTimeout(() => {
+          fill.style.transition = "width 1s ease-in-out";
+          fill.style.width = width;
+        }, 200);
+      });
 
-      const cards = document.querySelectorAll(".dashboard-card");
-      cards.forEach((card) => {
-        card.addEventListener("mouseover", () => {
-          card.style.transform = "scale(1.02)";
-          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
-        });
-        card.addEventListener("mouseout", () => {
-          card.style.transform = "scale(1)";
-          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-        });
-      });
-    });
-  </script>
+      const cards = document.querySelectorAll(".dashboard-card");
+      cards.forEach((card) => {
+        card.addEventListener("mouseover", () => {
+          card.style.transform = "scale(1.02)";
+          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
+        });
+        card.addEventListener("mouseout", () => {
+          card.style.transform = "scale(1)";
+          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+        });
+      });
+    });
+  </script>
 </body>
 </html>
