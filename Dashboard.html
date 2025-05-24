@@ -69,7 +69,7 @@
       <h1>IT Study Hub</h1>
       <button class="nav-toggle" onclick="toggleMenu()">☰</button>
       <nav>
-        <ul>
+        <ul id="mobileMenu">
           <li><a href="Dashboard.html">Dashboard</a></li>
           <li><a href="videos.html">Video Library</a></li>
           <li><a href="live-classes.html">Live Classes</a></li>
@@ -123,7 +123,7 @@
 
     // Menu toggle function for mobile
     function toggleMenu() {
-      const navMenu = document.querySelector("nav ul");
+      const navMenu = document.getElementById("mobileMenu");
       navMenu.classList.toggle("show");
     }
   </script>
