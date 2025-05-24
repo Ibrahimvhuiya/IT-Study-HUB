@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard | IT Study Hub</title>
   <link rel="stylesheet" href="css/Style.css">
   <link rel="stylesheet" href="css/Dashboard.css">
@@ -44,6 +44,23 @@
         position: relative;
       }
     }
+
+    .user-info-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .user-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -69,7 +86,7 @@
 
   <main class="dashboard-container container">
     <h2>Welcome to your IT Study Hub Dashboard!</h2>
-    <!-- Additional dashboard content can be inserted here -->
+    <!-- User Info Box will appear here dynamically -->
   </main>
 
   <footer class="footer">
@@ -77,29 +94,34 @@
   </footer>
 
   <script>
+    // Check if user is logged in
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
+      // Not logged in, redirect to login page
       window.location.href = "login.html";
     } else {
+      // Show user info
       const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
       userInfo.classList.add("user-info-box");
-      userInfo.innerHTML = 
+      userInfo.innerHTML = `
         <img src="${user.picture}" alt="User Image" class="user-img">
         <div>
           <h3>👋 Welcome, ${user.name}</h3>
           <p>${user.email}</p>
         </div>
-      ;
+      `;
       container.prepend(userInfo);
     }
 
+    // Logout function
     function logout() {
       localStorage.removeItem("user");
       window.location.href = "index.html";
     }
 
+    // Menu toggle function for mobile
     function toggleMenu() {
       const navMenu = document.querySelector("nav ul");
       navMenu.classList.toggle("show");
