@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +14,7 @@
       background: none;
       border: none;
       color: white;
+      padding: 10px;
     }
 
     @media (max-width: 768px) {
@@ -27,6 +27,15 @@
         left: 0;
         right: 0;
         z-index: 1000;
+        padding: 0;
+        margin: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #34495e;
       }
 
       nav ul.show {
@@ -39,11 +48,28 @@
 
       .top-bar .container {
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
+    }
 
-      .top-bar nav {
-        position: relative;
-      }
+    .user-info-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .user-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -51,9 +77,9 @@
   <header class="top-bar">
     <div class="container">
       <h1>IT Study Hub</h1>
-      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
       <nav>
-        <ul>
+        <ul id="navMenu">
           <li><a href="Dashboard.html">Dashboard</a></li>
           <li><a href="videos.html">Video Library</a></li>
           <li><a href="live-classes.html">Live Classes</a></li>
@@ -62,7 +88,7 @@
           <li><a href="profile.html">My Profile</a></li>
           <li><a href="Resources.html">Resources</a></li>
           <li><a href="Blog.html">Blog</a></li>
-          <li><a href="#" onclick="logout()">Logout</a></li>
+          <li><a href="#" onclick="confirmLogout()">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -78,22 +104,46 @@
   </footer>
 
   <script>
-    const user = JSON.parse(localStorage.getItem("user"));
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) {
-      window.location.href = "login.html";
-    } else {
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      // Display user info
       const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
       userInfo.classList.add("user-info-box");
+      
+      // Default avatar if user image not available
+      const userImage = user.picture || 'https://via.placeholder.com/60';
+      
       userInfo.innerHTML = `
-        <img src="${user.picture}" alt="User Image" class="user-img">
+        <img src="${userImage}" alt="User Image" class="user-img">
         <div>
-          <h3>👋 Welcome, ${user.name}</h3>
-          <p>${user.email}</p>
+          <h3>👋 Welcome, ${user.name || 'User'}</h3>
+          <p>${user.email || ''}</p>
         </div>
       `;
       container.prepend(userInfo);
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const navMenu = document.getElementById("navMenu");
+        const navToggle = document.querySelector(".nav-toggle");
+        
+        if (!navMenu.contains(event.target) && event.target !== navToggle) {
+          navMenu.classList.remove("show");
+        }
+      });
+    });
+
+    function confirmLogout() {
+      if (confirm("Are you sure you want to logout?")) {
+        logout();
+      }
     }
 
     function logout() {
@@ -102,7 +152,7 @@
     }
 
     function toggleMenu() {
-      const navMenu = document.querySelector("nav ul");
+      const navMenu = document.getElementById("navMenu");
       navMenu.classList.toggle("show");
     }
   </script>
