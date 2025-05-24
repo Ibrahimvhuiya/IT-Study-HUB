@@ -6,78 +6,40 @@
   <title>Dashboard | IT Study Hub</title>
   <link rel="stylesheet" href="css/Style.css" />
   <link rel="stylesheet" href="css/Dashboard.css" />
-  <style>
-    .nav-toggle {
-      display: none; /* Hidden by default */
-      font-size: 24px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: white;
-    }
-
-    /* Styles for the user information box */
-    .user-info-box {
-      display: flex;
-      align-items: right;
-      gap: 15px;
-      padding: 15px;
-      background: #ecf0f1;
-      border-radius: 10px;
-      margin-bottom: 25px;
-    }
-
-    /* Styles for the user's profile image within the info box */
-    .user-info-box .user-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    /* Media query for screens up to 768px wide (mobile view) */
-    @media (max-width: 768px) {
-      /* Styles for the navigation menu when displayed as a side-panel */
-  </style>
-</head>
+  </head>
 <body>
   <header class="top-bar">
-    <div class="container">
-      <h1>IT Study Hub</h1>
-      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-      <nav>
-        <ul id="nav-menu">
-          <li><a href="Dashboard.html">Dashboard</a></li>
-          <li><a href="videos.html">Video Library</a></li>
-          <li><a href="live-classes.html">Live Classes</a></li>
-          <li><a href="note.html">Teachers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="profile.html">My Profile</a></li>
-          <li><a href="Resources.html">Resources</a></li>
-          <li><a href="Blog.html">Blog</a></li>
-          <li><a href="index.html" onclick="logout()">Logout</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>IT Study Hub</h1>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="Dashboard.html">Dashboard</a></li>
+        <li><a href="videos.html">Video Library</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="note.html">Teachers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="Resources.html">Resources</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="index.html" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="dashboard-container container">
-    <h2>Welcome to your IT Study Hub Dashboard!</h2> 
-  </main>
+    <h2>Welcome to your IT Study Hub Dashboard!</h2>
+    </main>
 
   <footer class="footer">
     <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
   </footer>
 
   <script>
-    // Retrieve user data from localStorage
     const user = JSON.parse(localStorage.getItem("user"));
 
-    // Redirect to login page if no user data is found
     if (!user) {
       window.location.href = "login.html";
     } else {
-      // Add user information box to the dashboard
       const container = document.querySelector(".dashboard-container");
       const userInfo = document.createElement("div");
       userInfo.classList.add("user-info-box");
@@ -88,24 +50,20 @@
           <p>${user.email}</p>
         </div>
       `;
-      container.prepend(userInfo); // Insert the user info box at the beginning of the main content
+      container.prepend(userInfo);
     }
 
-    // Function to handle user logout
     function logout() {
-      localStorage.removeItem("user"); // Remove user data from local storage
-      window.location.href = "index.html"; // Redirect to the homepage
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
     }
 
-    // Function to toggle the mobile navigation menu's visibility
     function toggleMenu() {
       const navMenu = document.getElementById("nav-menu");
-      navMenu.classList.toggle("show"); // Add or remove the 'show' class
+      navMenu.classList.toggle("show");
     }
 
-    // Execute code after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function () {
-      // Update the greeting message based on the current time of day
       const greetingElement = document.querySelector(".dashboard-container h2");
       const hour = new Date().getHours();
 
@@ -118,27 +76,25 @@
         greetingElement.textContent = greeting;
       }
 
-      // Animate any progress bars on the page
       const progressFills = document.querySelectorAll(".progress-fill");
       progressFills.forEach((fill) => {
         const width = fill.getAttribute("data-width") || "0%";
-        fill.style.width = "0"; // Start animation from zero width
+        fill.style.width = "0";
         setTimeout(() => {
-          fill.style.transition = "width 1s ease-in-out"; // Apply transition effect
-          fill.style.width = width; // Expand to the data-width value
-        }, 200); // Small delay before starting the animation
+          fill.style.transition = "width 1s ease-in-out";
+          fill.style.width = width;
+        }, 200);
       });
 
-      // Add hover effects to dashboard cards
       const cards = document.querySelectorAll(".dashboard-card");
       cards.forEach((card) => {
         card.addEventListener("mouseover", () => {
-          card.style.transform = "scale(1.02)"; // Slightly enlarge the card
-          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)"; // Enhance shadow
+          card.style.transform = "scale(1.02)";
+          card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
         });
         card.addEventListener("mouseout", () => {
-          card.style.transform = "scale(1)"; // Reset card size
-          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)"; // Reset shadow
+          card.style.transform = "scale(1)";
+          card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
         });
       });
     });
