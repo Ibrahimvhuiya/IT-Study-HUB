@@ -4,70 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard | IT Study Hub</title>
-  <link rel="stylesheet" href="css/Style.css">
+  <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
 
   <header class="top-bar">
-    <div class="container">
-      <h1>IT Study Hub</h1>
-      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-      <nav>
-        <ul id="mobileMenu">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Video Library</a></li>
-          <li><a href="#">Live Classes</a></li>
-          <li><a href="#">Teachers</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">Resources</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#" onclick="logout()">Logout</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>IT Study Hub</h1>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul id="mobileMenu">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="dashboard-container">
-    <h2>Welcome to your IT Study Hub Dashboard!</h2>
-    <!-- User Info Box will be inserted here -->
+    <h2>Welcome to your Dashboard</h2>
+    <div id="userInfo"></div>
   </main>
 
   <footer class="footer">
     <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Show user info from localStorage (if exists)
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      window.location.href = "login.html";
-    } else {
-      const container = document.querySelector(".dashboard-container");
-      const userInfo = document.createElement("div");
-      userInfo.classList.add("user-info-box");
-      userInfo.innerHTML = `
-        <img src="${user.picture}" alt="User Image" class="user-img">
-        <div>
-          <h3>👋 Welcome, ${user.name}</h3>
-          <p>${user.email}</p>
-        </div>
-      `;
-      container.prepend(userInfo);
-    }
-
-    // Toggle menu on mobile
-    function toggleMenu() {
-      const navMenu = document.getElementById("mobileMenu");
-      navMenu.classList.toggle("show");
-    }
-
-    // Logout function
-    function logout() {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
-    }
-  </script>
-
+  <script src="dashboard.js"></script>
 </body>
 </html>
