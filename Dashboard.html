@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard | IT Study Hub</title>
-  <link rel="stylesheet" href="css/Dashboard.css">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
     }
 
+    /* Top bar */
     .top-bar {
       background-color: #2c3e50;
       color: white;
@@ -32,6 +32,7 @@
       font-size: 24px;
     }
 
+    /* Navigation */
     .nav-toggle {
       display: none;
       font-size: 24px;
@@ -86,6 +87,7 @@
       }
     }
 
+    /* User Info */
     .user-info-box {
       display: flex;
       align-items: center;
@@ -130,14 +132,14 @@
       <button class="nav-toggle" onclick="toggleMenu()">☰</button>
       <nav>
         <ul id="mobileMenu">
-          <li><a href="Dashboard.html">Dashboard</a></li>
-          <li><a href="videos.html">Video Library</a></li>
-          <li><a href="live-classes.html">Live Classes</a></li>
-          <li><a href="note.html">Teachers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="profile.html">My Profile</a></li>
-          <li><a href="Resources.html">Resources</a></li>
-          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Video Library</a></li>
+          <li><a href="#">Live Classes</a></li>
+          <li><a href="#">Teachers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Blog</a></li>
           <li><a href="#" onclick="logout()">Logout</a></li>
         </ul>
       </nav>
@@ -146,7 +148,7 @@
 
   <main class="dashboard-container">
     <h2>Welcome to your IT Study Hub Dashboard!</h2>
-    <!-- User Info will be shown here -->
+    <!-- User Info Box will be inserted here -->
   </main>
 
   <footer class="footer">
@@ -154,7 +156,7 @@
   </footer>
 
   <script>
-    // User check
+    // Show user info from localStorage (if exists)
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       window.location.href = "login.html";
@@ -172,16 +174,18 @@
       container.prepend(userInfo);
     }
 
-    // Toggle menu
+    // Toggle menu on mobile
     function toggleMenu() {
       const navMenu = document.getElementById("mobileMenu");
       navMenu.classList.toggle("show");
     }
 
+    // Logout function
     function logout() {
       localStorage.removeItem("user");
       window.location.href = "index.html";
     }
   </script>
+
 </body>
 </html>
