@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Program Solve - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/program-solve.css"/>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">IT Study Hub</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="program-solve.html" class="active">Program Solve</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="index.html" class="btn">Logout</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Practice Programming Problems</h1>
+
+    <!-- HTML Problem -->
+    <section class="course-section" id="html-section">
+      <h2>HTML Problems</h2>
+      <div class="problem">
+        <p><strong>Problem 1:</strong> Create a simple HTML page with heading, paragraph, and image.</p>
+        <textarea id="html-code" placeholder="Write your HTML code here..."></textarea>
+        <div class="problem-buttons">
+          <button onclick="solveProblem('html')">Submit</button>
+          <button onclick="quitProblem('html')">Quit</button>
+        </div>
+        <p id="html-result" class="result"></p>
+      </div>
+    </section>
+
+    <!-- CSS Problem -->
+    <section class="course-section" id="css-section">
+      <h2>CSS Problems</h2>
+      <div class="problem">
+        <p><strong>Problem 1:</strong> Style a navigation bar using Flexbox.</p>
+        <textarea id="css-code" placeholder="Write your CSS code here..."></textarea>
+        <div class="problem-buttons">
+          <button onclick="solveProblem('css')">Submit</button>
+          <button onclick="quitProblem('css')">Quit</button>
+        </div>
+        <p id="css-result" class="result"></p>
+      </div>
+    </section>
+
+    <!-- JavaScript Problem -->
+    <section class="course-section" id="js-section">
+      <h2>JavaScript Problems</h2>
+      <div class="problem">
+        <p><strong>Problem 1:</strong> Write a function to find the maximum of three numbers.</p>
+        <textarea id="js-code" placeholder="Write your JavaScript code here..."></textarea>
+        <div class="problem-buttons">
+          <button onclick="solveProblem('js')">Submit</button>
+          <button onclick="quitProblem('js')">Quit</button>
+        </div>
+        <p id="js-result" class="result"></p>
+      </div>
+    </section>
+
+    <!-- Python Problem -->
+    <section class="course-section" id="python-section">
+      <h2>Python Problems</h2>
+      <div class="problem">
+        <p><strong>Problem 1:</strong> Write a Python program to check if a number is prime.</p>
+        <textarea id="python-code" placeholder="Write your Python code here..."></textarea>
+        <div class="problem-buttons">
+          <button onclick="solveProblem('python')">Submit</button>
+          <button onclick="quitProblem('python')">Quit</button>
+        </div>
+        <p id="python-result" class="result"></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/program-solve.js"></script>
+</body>
+</html>

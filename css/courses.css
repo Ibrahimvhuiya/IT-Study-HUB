@@ -1,0 +1,110 @@
+/* Course Grid */
+.course-categories {
+  text-align: center;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.course-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.course-card h3 {
+  color: #0a3d62;
+  margin-bottom: 0.5rem;
+}
+
+.course-card p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.course-card .btn {
+  display: inline-block;
+  background-color: #00a8ff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.course-card .btn:hover {
+  background-color: #0097e6;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+  background-color: #eaf6ff;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.why-choose-us ul {
+  list-style: none;
+  padding-left: 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+.why-choose-us ul li {
+  background-color: #dff9fb;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid #00a8ff;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #222;
+}
+
+/* Call To Action */
+.call-to-action {
+  text-align: center;
+  background: linear-gradient(to right, #00a8ff, #9c88ff);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+.call-to-action h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.call-to-action p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #f0f0f0;
+}
+
+.call-to-action .btn {
+  background-color: #fff;
+  color: #00a8ff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.call-to-action .btn:hover {
+  background-color: #dff9fb;
+  color: #0097e6;
+}

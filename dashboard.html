@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">IT Study Hub</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="video.html">Video</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" class="btn">Logout</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-container">
+    <!-- User Greeting -->
+    <div class="dashboard-section">
+      <h2>Welcome back, Student!</h2>
+      <p>Here's a quick look at your learning progress and upcoming activities.</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="dashboard-section dashboard-buttons">
+      <button onclick="location.href='program-solve.html'">Program Solve</button>
+      <button onclick="location.href='assignments.html'">Assignments</button>
+    </div>
+
+    <!-- Progress Overview -->
+    <div class="dashboard-section">
+      <h2>Progress Overview</h2>
+
+      <p>HTML Course</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="html-progress">0%</div>
+      </div>
+
+      <p>CSS Course</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="css-progress">0%</div>
+      </div>
+
+      <p>JavaScript Course</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="js-progress">0%</div>
+      </div>
+
+      <p>Python Course</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="python-progress">0%</div>
+      </div>
+
+      <p><strong>Total Overall Progress:</strong> <span id="total-progress">0%</span></p>
+      <p id="last-update-time" style="color: gray; margin-top: 8px;"></p>
+    </div>
+
+    <!-- Reset Progress -->
+    <div class="dashboard-section">
+      <h2>Reset Course Progress</h2>
+      <button onclick="resetProgress('html')">Reset HTML</button>
+      <button onclick="resetProgress('css')">Reset CSS</button>
+      <button onclick="resetProgress('js')">Reset JavaScript</button>
+      <button onclick="resetProgress('python')">Reset Python</button>
+    </div>
+
+    <!-- Live Classes Schedule -->
+    <div class="dashboard-section">
+      <h2>Upcoming Live Classes</h2>
+      <ul>
+        <li>HTML Practice Session - May 28, 2025 - 4:00 PM</li>
+        <li>JavaScript Q&A - May 29, 2025 - 6:00 PM</li>
+        <li>Python Project Discussion - June 1, 2025 - 5:00 PM</li>
+      </ul>
+    </div>
+
+    <!-- Assignments -->
+    <div class="dashboard-section">
+      <h2>Assignments</h2>
+      <ul id="assignment-list">
+        <li>
+          HTML Assignment - 
+          <span class="status" data-id="html"></span>
+          <button onclick="submitAssignment('html')">Submit</button>
+          <input type="file" onchange="handleUpload('html', this)" style="display: none;">
+        </li>
+        <li>
+          CSS Assignment - 
+          <span class="status" data-id="css"></span>
+          <button onclick="submitAssignment('css')">Submit</button>
+          <input type="file" onchange="handleUpload('css', this)" style="display: none;">
+        </li>
+        <li>
+          JavaScript Assignment - 
+          <span class="status" data-id="js"></span>
+          <button onclick="submitAssignment('js')">Submit</button>
+          <input type="file" onchange="handleUpload('js', this)" style="display: none;">
+        </li>
+      </ul>
+    </div>
+
+    <!-- Notifications -->
+    <div class="dashboard-section">
+      <h2>Notifications</h2>
+      <div class="notification">New video uploaded in "Python Programming"</div>
+      <div class="notification">Live class on "CSS Flexbox" added to your schedule</div>
+      <div class="notification">Reminder: Complete your "JavaScript Quiz"</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

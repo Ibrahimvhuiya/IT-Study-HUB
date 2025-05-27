@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>My Profile</h1>
+      <p>Manage your personal information and learning progress.</p>
+    </div>
+  </section>
+
+  <!-- Profile Info Section -->
+  <section class="profile-section" style="padding: 2rem; max-width: 800px; margin: auto;">
+    <div class="profile-card" style="text-align: center;">
+      <img id="profile-picture" src="images/default-profile.png" alt="Profile Image" style="width: 120px; border-radius: 50%;" />
+      <h2 id="profile-name">John Doe</h2>
+      <p>Email: <span id="profile-email">john@example.com</span></p>
+      <p>Major: <span id="profile-major">Computer Science</span></p>
+      <p>Bio: <span id="profile-bio">Aspiring web developer passionate about building amazing applications.</span></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="dashboard.html" class="btn">Back to Dashboard</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) {
+        alert("No user is logged in. Redirecting to login page.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("profile-name").textContent = user.name || "John Doe";
+      document.getElementById("profile-email").textContent = user.email || "john@example.com";
+      document.getElementById("profile-major").textContent = user.major || "Not set";
+      document.getElementById("profile-bio").textContent = user.bio || "Bio not written yet";
+      document.getElementById("profile-picture").src = user.picture || "images/default-profile.png";
+    });
+  </script>
+</body>
+</html>

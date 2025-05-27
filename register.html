@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">IT Study Hub</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn">Login</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <!-- Registration Section -->
+  <section style="padding: 3rem 2rem; max-width: 500px; margin: auto;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Create Your Account</h2>
+    <form id="registerForm" style="background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+      <div style="margin-bottom: 1rem;">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label for="password">Password</label>
+        <input type="password" id="password" required style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" />
+      </div>
+      <div style="text-align: center;">
+        <button type="submit" class="btn">Register</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Registration form data save to localStorage
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      const user = { name, email, password };
+      localStorage.setItem('it_user', JSON.stringify(user));
+      alert("Registration successful!");
+      window.location.href = 'courses.html';
+    });
+  </script>
+  <script src="js/script.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

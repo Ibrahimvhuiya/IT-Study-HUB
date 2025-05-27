@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/courses.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">IT Study Hub</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="video.html">Video</a></li>
+        <li><a href="live-classes.html">Live Classes</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" class="btn" onclick="logout()">Logout</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Our Courses</h1>
+      <p>Explore various sections of IT learning and development.</p>
+    </div>
+  </section>
+
+  <!-- Course Categories Section -->
+  <section class="course-categories">
+    <h2>Available Courses</h2>
+    <div class="course-grid">
+      <div class="course-card">
+        <h3>HTML Basics</h3>
+        <p>Start your web journey by learning HTML from scratch.</p>
+        <a href="html-course.html" class="btn">Start Learning</a>
+      </div>
+      <div class="course-card">
+        <h3>CSS Styling</h3>
+        <p>Style your websites beautifully with advanced CSS.</p>
+        <a href="css-course.html" class="btn">Start Learning</a>
+      </div>
+      <div class="course-card">
+        <h3>JavaScript Essentials</h3>
+        <p>Learn to make websites dynamic and interactive.</p>
+        <a href="js-course.html" class="btn">Start Learning</a>
+      </div>
+      <div class="course-card">
+        <h3>Python Programming</h3>
+        <p>Master Python from basics to advanced projects.</p>
+        <a href="python-course.html" class="btn">Start Learning</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-us">
+    <h2>Why Choose IT Study Hub?</h2>
+    <ul>
+      <li>✅ Beginner to Advanced Course Content</li>
+      <li>✅ Regular Live Classes with Experts</li>
+      <li>✅ Programming Problems and Solutions</li>
+      <li>✅ Interactive Dashboard with Progress Tracking</li>
+    </ul>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="call-to-action">
+    <h2>Start Your IT Career Now!</h2>
+    <p>Join thousands of learners and start building real-world projects.</p>
+    <a href="dashboard.html" class="btn">Go to Dashboard</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Redirect to login if not logged in
+    document.addEventListener("DOMContentLoaded", function () {
+      const user = localStorage.getItem("user");
+      if (!user) {
+        alert("Please login to access the courses.");
+        window.location.href = "login.html";
+      }
+    });
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Login</h1>
+    <form onsubmit="loginUser(event)">
+      <div class="input-group">
+        <input type="email" id="gmail" placeholder="Enter your Gmail" required>
+        <i class='bx bx-user'></i>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Enter your Password" required>
+        <i class='bx bx-lock-alt'></i>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe"> Remember me</label>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Google Sign-In Button -->
+    <div id="googleButton" style="margin-top: 20px;"></div>
+
+    <div class="social-login">
+      <button onclick="signInWithFacebook()" style="color: #1877F2;"><i class='bx bxl-facebook-circle'></i></button>
+      <button onclick="signInWithTwitter()" style="color: #1DA1F2;"><i class='bx bxl-twitter'></i></button>
+    </div>
+
+    <p><a href="#">Forgot Password?</a></p>
+    <p><a href="register.html">Don't have an account? Register</a></p>
+  </div>
+
+  <script>
+    // Manual Login Function
+    function loginUser(e) {
+      e.preventDefault();
+      const email = document.getElementById("gmail").value.trim();
+      const password = document.getElementById("password").value;
+
+      const savedUser = JSON.parse(localStorage.getItem("it_user"));
+
+      if (savedUser && email === savedUser.email && password === savedUser.password) {
+        const profile = {
+          name: savedUser.name,
+          email: savedUser.email,
+          picture: "images/default-profile.png",
+          major: "Not set",
+          bio: "Bio not written yet"
+        };
+        localStorage.setItem("user", JSON.stringify(profile));
+        window.location.href = "courses.html";
+      } else {
+        alert("Invalid credentials");
+      }
+    }
+
+    // Google Sign-In
+    function handleCredentialResponse(response) {
+      const data = parseJwt(response.credential);
+      const profile = {
+        name: data.name,
+        email: data.email,
+        picture: data.picture || "images/default-profile.png",
+        major: "Not set",
+        bio: "Bio not written yet"
+      };
+      localStorage.setItem("user", JSON.stringify(profile));
+      window.location.href = "courses.html";
+    }
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "742706437550-3ob40tjegsenn3283et23t48va5e9ktu.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("googleButton"),
+        { theme: "outline", size: "large" }
+      );
+    };
+
+    // Placeholder Social Login Functions
+    function signInWithFacebook() {
+      alert("Facebook login is not implemented yet.");
+    }
+
+    function signInWithTwitter() {
+      alert("Twitter login is not implemented yet.");
+    }
+  </script>
+</body>
+</html>
