@@ -1,1 +1,27 @@
+/* File Upload and Status Styles */
+input[type="file"] {
+  margin-left: 10px;
+}
+button {
+  margin-left: 5px;
+  padding: 3px 10px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #005f73;
+}
+span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+span.submitted {
+  color: green;
+}
+span.not-submitted {
+  color: red;
+}
 
