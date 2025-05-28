@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profile - IT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Edit Profile</h1>
+      <p>Update your personal information and save the changes.</p>
+    </div>
+  </section>
+
+  <!-- Edit Form -->
+  <section class="profile-section" style="padding: 2rem; max-width: 800px; margin: auto;">
+    <form id="edit-form" class="profile-card" style="text-align: center;">
+      <!-- Profile Image Preview -->
+      <img id="preview-picture" src="images/default-profile.png" alt="Profile Image" style="width: 120px; border-radius: 50%; margin-bottom: 1rem;" />
+
+      <!-- Image URL -->
+      <div class="form-control">
+        <label for="picture">Profile Image URL</label><br>
+        <input type="url" id="picture" placeholder="https://example.com/me.jpg">
+      </div>
+
+      <!-- Name -->
+      <div class="form-control">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" required>
+      </div>
+
+      <!-- Email (read-only, ধরে নিচ্ছি লগ-ইন ইমেল পরিবর্তন করা যাবে না) -->
+      <div class="form-control">
+        <label for="email">Email</label><br>
+        <input type="email" id="email" readonly>
+      </div>
+
+      <!-- Major -->
+      <div class="form-control">
+        <label for="major">Major</label><br>
+        <input type="text" id="major">
+      </div>
+
+      <!-- Bio -->
+      <div class="form-control">
+        <label for="bio">Bio</label><br>
+        <textarea id="bio" rows="3"></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="margin-top: 1.5rem;">
+        <button type="submit" class="btn">Save Changes</button>
+        <a href="profile.html" class="btn" style="margin-left: .5rem;">Cancel</a>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IT Study Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Helper: load current user or redirect
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("No user is logged in. Redirecting to login page.");
+      window.location.href = "login.html";
+    }
+
+    // Populate form with existing values
+    const form = document.getElementById("edit-form");
+    document.getElementById("name").value    = user.name   || "";
+    document.getElementById("email").value   = user.email  || "";
+    document.getElementById("major").value   = user.major  || "";
+    document.getElementById("bio").value     = user.bio    || "";
+    document.getElementById("picture").value = user.picture || "";
+    document.getElementById("preview-picture").src =
+      user.picture || "images/default-profile.png";
+
+    // Live preview when image URL changes
+    document.getElementById("picture").addEventListener("input", e => {
+      document.getElementById("preview-picture").src =
+        e.target.value || "images/default-profile.png";
+    });
+
+    // Save handler
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      // Update user object
+      const updatedUser = {
+        ...user,                    // রাখল বিদ্যমান অন্য ফিল্ডগুলি
+        name   : document.getElementById("name").value.trim(),
+        major  : document.getElementById("major").value.trim(),
+        bio    : document.getElementById("bio").value.trim(),
+        picture: document.getElementById("picture").value.trim() || "images/default-profile.png"
+      };
+
+      // Persist to LocalStorage
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      // Redirect back to profile page
+      window.location.href = "profile.html";
+    });
+  </script>
+</body>
+</html>
